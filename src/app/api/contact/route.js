@@ -122,13 +122,13 @@ export async function POST(request) {
         Best regards,
         Universal Pet Movers Team
       `,
-    };
-
-    // Send business email
+    };    // Send business email
     await transporter.sendMail(businessEmail);
     
     // Note: We're not sending customer email since we don't collect customer email
-    // The customer will be contacted via phone as mentioned in the request    return NextResponse.json(
+    // The customer will be contacted via phone as mentioned in the request
+    
+    return NextResponse.json(
       { 
         message: 'Your request has been submitted successfully! We will contact you shortly on the provided phone number.',
         success: true 
