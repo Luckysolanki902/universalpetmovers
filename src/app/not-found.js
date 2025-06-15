@@ -12,7 +12,7 @@ export default function NotFound() {
       <div className={styles.content}>
         <h1>404</h1>
         <h2>Page Not Found</h2>
-        <p>We couldn't find the page you were looking for.</p>
+        <p>We could not find the page you were looking for.</p>
         <Link href="/" className={styles.homeLink}>
           Return to Home
         </Link>
