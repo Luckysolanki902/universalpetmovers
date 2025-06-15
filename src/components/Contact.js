@@ -12,7 +12,8 @@ import {
   Clock,
   Loader,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  Phone
 } from 'lucide-react';
 import styles from './Contact.module.css';
 
@@ -26,6 +27,7 @@ const WhatsAppIcon = ({ size = 24 }) => (
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
+    phoneNumber: '',
     petType: '',
     petAge: '',
     transportDate: '',
@@ -50,7 +52,6 @@ const Contact = () => {
       [e.target.name]: e.target.value
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ loading: true, success: false, error: false, message: '' });
@@ -75,6 +76,7 @@ const Contact = () => {
         });
         setFormData({
           name: '',
+          phoneNumber: '',
           petType: '',
           petAge: '',
           transportDate: '',
@@ -211,6 +213,25 @@ const Contact = () => {
                   required
                   className={styles.input}
                   placeholder="Enter your full name"
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="phoneNumber" className={styles.label}>
+                  <Phone size={16} />
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  required
+                  className={styles.input}
+                  placeholder="Enter your phone number"
+                  pattern="[0-9]{10,15}"
+                  title="Please enter a valid phone number (10-15 digits)"
                 />
               </div>
 

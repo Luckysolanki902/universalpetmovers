@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, MessageCircle } from 'lucide-react';
+import { Drawer, Box } from '@mui/material';
 import styles from './Navigation.module.css';
 
 // WhatsApp Icon Component
@@ -30,7 +31,6 @@ const Navigation = () => {
       setIsMenuOpen(false);
     }
   };
-
   return (
     <motion.nav
       className={styles.nav}
@@ -83,66 +83,146 @@ const Navigation = () => {
         <motion.button
           className={styles.menuButton}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          whileTap={{ scale: 0.95 }}
+          whileTap={{ scale: 0.92 }}
+          whileHover={{ scale: 1.08, rotate: 10 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 10 }}
         >
           <Menu size={24} />
+          <span className={styles.menuButtonRipple}></span>
         </motion.button>
+          {/* MUI Drawer for Mobile */}
+        <Drawer
+          anchor="top"
+          open={isMenuOpen}
+          onClose={() => setIsMenuOpen(false)}
+          sx={{
+            '& .MuiDrawer-paper': {
+              height: '80%',
+              borderRadius: '0 0 24px 24px',
+              boxShadow: '0px 10px 30px rgba(44, 85, 48, 0.3)',
+              background: 'linear-gradient(135deg, rgba(244, 244, 244, 0.92), rgba(220, 247, 225, 0.92))',
+              borderTop: '5px solid #2c5530',
+              padding: '1.25rem',
+              overflow: 'hidden',
+             
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <motion.div
-            className={styles.mobileNav}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
+            },
+            '@keyframes gradient': {
+              '0%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' },
+              '100%': { backgroundPosition: '0% 50%' }
+            }
+          }}
+        >
+          <Box className={styles.muiDrawerContainer}>
             <div className={styles.mobileNavHeader}>
               <div className={styles.logo}>
-                <h1>Universal Pet Movers</h1>
+                <motion.h1 
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  Universal Pet Movers
+                </motion.h1>
               </div>
               <motion.button
                 onClick={() => setIsMenuOpen(false)}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.92 }}
+                whileHover={{ scale: 1.05, rotate: 90 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                className={styles.closeButton}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
               >
                 <X size={24} />
               </motion.button>
             </div>
-            
-            {navItems.map((item) => (
-              <motion.button
-                key={item.name}
-                className={styles.mobileNavLink}
-                onClick={() => scrollToSection(item.href)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
+
+            <Box className={styles.drawerContent}>
+              <motion.div 
+                className={styles.mobileNavLinks}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
               >
-                {item.name}
-              </motion.button>
-            ))}
-            
-            <div className={styles.mobileContact}>
-              <a href="https://wa.me/+911234567890" className={styles.whatsappLink} target="_blank" rel="noopener noreferrer">
-                <WhatsAppIcon size={18} />
-                Chat on WhatsApp
-              </a>
-              
-              <motion.button
-                className={styles.contactButton}
-                onClick={() => {
-                  scrollToSection('#contact');
-                  setIsMenuOpen(false);
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.name}
+                    className={styles.mobileNavLink}
+                    onClick={() => scrollToSection(item.href)}
+                    whileHover={{ scale: 1.03, backgroundColor: "rgba(255, 255, 255, 0.95)", y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      type: "spring",
+                      stiffness: 400, 
+                      damping: 17,
+                      delay: 0.1 + index * 0.08 
+                    }}
+                  >
+                    {item.name}
+                    {index === 0 && <span className={styles.currentPageIndicator}>Current</span>}
+                  </motion.button>
+                ))}
+              </motion.div>
+
+              <motion.div 
+                className={styles.mobileContact}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
               >
-                <Phone size={16} /> Call Us
-              </motion.button>
-            </div>
-          </motion.div>
-        )}
+                <div className={styles.contactDivider}>
+                  <span>Get in touch</span>
+                </div>
+                
+                <div className={styles.mobileContactButtons}>
+                  <motion.a 
+                    href="https://wa.me/918859491269" 
+                    className={`${styles.mobileContactButton} ${styles.whatsappButton}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"                
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileTap={{ scale: 0.97 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17, delay: 0.5 }}
+                  >
+                    <WhatsAppIcon size={20} />
+                    <span>Chat on WhatsApp</span>
+                  </motion.a>
+                  
+                  <motion.button
+                    className={`${styles.mobileContactButton} ${styles.callButton}`}
+                    onClick={() => {
+                      scrollToSection('#contact');
+                      setIsMenuOpen(false);
+                    }}
+                    whileHover={{ scale: 1.05, y: -3 }}                
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17, delay: 0.6 }}
+                  >
+                    <Phone size={18} />
+                    <span>Call Us</span>
+                  </motion.button>
+                </div>
+                
+                <motion.div 
+                  className={styles.mobileFooter}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.4 }}
+                >
+                  <p>Universal Pet Movers — Caring transport for your furry friends</p>
+                </motion.div>
+              </motion.div>
+            </Box>
+          </Box>
+        </Drawer>
       </div>
     </motion.nav>
   );

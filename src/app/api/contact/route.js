@@ -3,15 +3,15 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request) {
   try {
-    const { name, petType, petAge, transportDate, transportMode, dropLocation, comments } = await request.json();
+    const { name, phoneNumber, petType, petAge, transportDate, transportMode, dropLocation, comments } = await request.json();
 
     // Basic validation
-    if (!name || !petType || !petAge || !transportDate || !transportMode || !dropLocation) {
+    if (!name || !phoneNumber || !petType || !petAge || !transportDate || !transportMode || !dropLocation) {
       return NextResponse.json(
         { message: 'Please fill in all required fields.' },
         { status: 400 }
       );
-    }    // Create transporter (you'll need to configure with actual email service)
+    }// Create transporter (you'll need to configure with actual email service)
     // For now, using a generic SMTP configuration
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
@@ -21,15 +21,13 @@ export async function POST(request) {
         user: process.env.SMTP_USER || 'your-email@gmail.com',
         pass: process.env.SMTP_PASS || 'your-app-password',
       },
-    });
-
-    // Email content
+    });    // Email content
     const emailContent = `
       New Pet Transport Request from Universal Pet Movers Website
       
       Customer Details:
       - Name: ${name}
-      - Contact Phone: +91 8859491269 (Customer should be contacted on this number)
+      - Contact Phone: ${phoneNumber} (Customer should be contacted on this number)
       
       Pet Information:
       - Pet Type: ${petType}
@@ -52,7 +50,7 @@ export async function POST(request) {
     const businessEmail = {
       from: process.env.SMTP_USER || 'noreply@universalpetmovers.com',
       to: [
-        // 'akhandanandtripathi143@gmail.com',
+        'akhandanandtripathi143@gmail.com',
          'luckysolanki9027@gmail.com'],
       subject: `🐾 New Pet Transport Request - ${name} (${petType})`,
       text: emailContent,
@@ -61,11 +59,10 @@ export async function POST(request) {
           <h2 style="color: #2c5530; text-align: center; border-bottom: 2px solid #2c5530; padding-bottom: 10px;">
             🐾 New Pet Transport Request
           </h2>
-          
-          <div style="background: #f8fdf9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <div style="background: #f8fdf9; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #2c5530; margin-top: 0;">Customer Details</h3>
             <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Contact:</strong> <a href="tel:+918859491269" style="color: #2c5530;">+91 8859491269</a></p>
+            <p><strong>Contact:</strong> <a href="tel:${phoneNumber}" style="color: #2c5530;">${phoneNumber}</a></p>
           </div>
           
           <div style="background: #f0f8f0; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -105,12 +102,11 @@ export async function POST(request) {
       from: process.env.SMTP_USER || 'noreply@universalpetmovers.com',
       to: 'noreply@universalpetmovers.com', // We don't have customer email, so this is a placeholder
       subject: 'Thank you for your Pet Transport Request - Universal Pet Movers',
-      text: `
-        Dear ${name},
+      text: `        Dear ${name},
         
         Thank you for choosing Universal Pet Movers for your pet transportation needs.
         
-        We have received your request for ${petType} transport and our team will contact you shortly on +91 8859491269 to discuss the details and provide you with a customized quote.
+        We have received your request for ${petType} transport and our team will contact you shortly on ${phoneNumber} to discuss the details and provide you with a customized quote.
         
         Your Request Details:
         - Pet Type: ${petType}
@@ -119,7 +115,7 @@ export async function POST(request) {
         - Mode: ${transportMode}
         - Destination: ${dropLocation}
         
-        For immediate assistance, please call us at +91 8859491269.
+        For immediate assistance, please call us at our customer service number.
         
         Thank you for trusting us with your beloved pet's transportation.
         
@@ -132,9 +128,7 @@ export async function POST(request) {
     await transporter.sendMail(businessEmail);
     
     // Note: We're not sending customer email since we don't collect customer email
-    // The customer will be contacted via phone as mentioned in the request
-
-    return NextResponse.json(
+    // The customer will be contacted via phone as mentioned in the request    return NextResponse.json(
       { 
         message: 'Your request has been submitted successfully! We will contact you shortly on the provided phone number.',
         success: true 
@@ -147,7 +141,7 @@ export async function POST(request) {
     
     return NextResponse.json(
       { 
-        message: 'Sorry, there was an error processing your request. Please try again or call us directly at +91 8859491269.',
+        message: 'Sorry, there was an error processing your request. Please try again or call us directly.',
         success: false 
       },
       { status: 500 }
