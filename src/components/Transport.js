@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { 
   Plane, 
   Truck, 
@@ -116,7 +117,12 @@ const Transport = () => {  const transportModes = [
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
               <div className={styles.cardImage}>
-                <img src={mode.image} alt={mode.title} />
+                <Image 
+                  src={mode.image} 
+                  alt={mode.title}
+                  width={400}
+                  height={300}
+                />
                 <div 
                   className={styles.cardOverlay}
                   style={{ background: mode.gradient }}

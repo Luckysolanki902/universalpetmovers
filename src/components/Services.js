@@ -8,6 +8,7 @@ import {
   MapPin,
   ArrowRight
 } from 'lucide-react';
+import Image from 'next/image';
 import styles from './Services.module.css';
 
 const Services = () => {  const services = [
@@ -63,7 +64,12 @@ const Services = () => {  const services = [
               whileHover={{ y: -5 }}
             >
               <div className={styles.serviceImage}>
-                <img src={service.image} alt={service.title} />
+                <Image 
+                  src={service.image} 
+                  alt={service.title}
+                  width={300}
+                  height={200}
+                />
                 <div className={styles.serviceIcon}>
                   {service.icon}
                 </div>

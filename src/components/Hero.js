@@ -103,7 +103,14 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <img src="/dogs-playing.jpg" alt="Happy dogs playing" className={styles.heroImage} />
+            <Image 
+              src="/dogs-playing.jpg" 
+              alt="Happy dogs playing" 
+              className={styles.heroImage}
+              width={600}
+              height={400}
+              priority
+            />
           </motion.div>
         </div>
       </div>

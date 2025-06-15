@@ -126,14 +126,18 @@ const Navigation = () => {
                 </motion.h1>
               </div>
               <motion.button
-                onClick={() => setIsMenuOpen(false)}
-                whileTap={{ scale: 0.92 }}
+                onClick={() => setIsMenuOpen(false)}                whileTap={{ scale: 0.92 }}
                 whileHover={{ scale: 1.05, rotate: 90 }}
-                transition={{ type: "spring", stiffness: 400, damping: 15 }}
                 className={styles.closeButton}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 400, 
+                  damping: 15,
+                  opacity: { duration: 0.3 },
+                  scale: { duration: 0.3 }
+                }}
               >
                 <X size={24} />
               </motion.button>

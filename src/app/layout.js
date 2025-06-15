@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import { Analytics } from "@vercel/analytics/next"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -16,7 +16,6 @@ export const metadata = {
   description: "Professional pet transportation services across India. Safe boarding, pickup & drop, vet visits, and out-destination transport for dogs, cats, and birds. Air, road & ship transport available.",
   keywords: "pet transportation, pet movers, dog transport, cat transport, bird transport, pet boarding, vet visit, pet pickup drop, Ghaziabad, Noida, Jaipur, Udaipur, Mumbai, Lucknow",
   author: "Universal Pet Movers",
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
     title: "Universal Pet Movers - Safe & Reliable Pet Transportation Services",
@@ -26,11 +25,17 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );

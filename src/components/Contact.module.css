@@ -18,7 +18,11 @@
   padding: 0 2rem;
   width: 100%;
   box-sizing: border-box;
-  overflow-x: hidden; /* Add this to prevent horizontal overflow */
+  overflow: hidden; /* Add this to prevent horizontal overflow */
+}
+
+.container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for a cleaner look */
 }
 
 .header {
@@ -371,7 +375,7 @@
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
-    overflow-x: hidden; /* Make sure overflow is hidden */
+    overflow: hidden; /* Make sure overflow is hidden */
   }
   
   .title {
