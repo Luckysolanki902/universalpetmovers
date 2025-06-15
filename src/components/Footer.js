@@ -73,7 +73,7 @@ const Footer = () => {
               </p>
               <a href="https://wa.me/+911234567890" className={styles.whatsappLink} target="_blank" rel="noopener noreferrer">
                 <WhatsAppIcon size={18} />
-                Chat with us on WhatsApp
+                Chat on WhatsApp
               </a>
               <div className={styles.socialLinks}>
                 <a href="#" className={styles.socialLink} aria-label="Facebook">
@@ -99,17 +99,25 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h3 className={styles.footerTitle}>Quick Links</h3>
-            <div className={styles.linksList}>
+            <h3 className={styles.footerTitle}>Quick Links</h3>            <div className={styles.linksList}>
               {quickLinks.map((link, index) => (
-                <button
+                <motion.button
                   key={index}
                   className={styles.link}
-                  onClick={() => scrollToSection(link.href)}
+                  onClick={() => scrollToSection(link.href)}                  whileHover={{ x: 5 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 400, 
+                    damping: 10,
+                    delay: 0.2 + (index * 0.1)
+                  }}
                 >
-                  <ChevronRight size={16} />
+                  <ChevronRight size={18} />
                   {link.name}
-                </button>
+                </motion.button>
               ))}
             </div>
           </motion.div>
@@ -167,7 +175,7 @@ const Footer = () => {
                 </div>
                 <div className={styles.contactText}>
                   <span>Email Address</span>
-                  <a href="mailto:info@universalpetmovers.com">info@universalpetmovers.com</a>
+                  <a href="mailto:akhandanandtripathi143@gmail.com">akhandanandtripathi143@gmail.com</a>
                 </div>
               </div>
             </div>

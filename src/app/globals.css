@@ -20,14 +20,8 @@ body {
   width: 100%;
   max-width: 100vw;
   cursor: auto;
-  padding-top: 3rem;
 }
-@media  (max-width: 768px) {
-  body {
-    padding-top: 1rem;
-  }
-  
-}
+
 /* Interactive elements get pointer cursor */
 a, button, [role="button"], input[type="submit"], input[type="button"], 
 .clickable, .interactive, .whatsapp-link, .whatsapp-button {

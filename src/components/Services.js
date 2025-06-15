@@ -86,24 +86,48 @@ const Services = () => {  const services = [
           ))}
         </div>
 
+  
         <motion.div
-          className={styles.servicesCta}
-          initial={{ opacity: 0, y: 30 }}
+          className={styles.consultationBanner}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <div className={styles.ctaContent}>
-            <h3>Need a Custom Service?</h3>
-            <p>We provide tailored pet transportation solutions to meet your specific needs</p>
-            <motion.button
-              className={styles.ctaButton}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Contact Us for Custom Solutions
-            </motion.button>
+          <div className={styles.consultationContent}>
+            <div className={styles.consultationInfo}>
+              <motion.h3 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                Need Help Choosing the Right Transport?
+              </motion.h3>
+              <motion.p
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+              >
+                Our experts will help you select the best transportation mode based on your pet&apos;s needs and destination
+              </motion.p>
+              <motion.button
+                className={styles.consultationButton}
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+              >
+                Get Transport Consultation Now
+              </motion.button>
+            </div>
+            <div className={styles.consultationImage}>
+              <div className={styles.imageOverlay}></div>
+            </div>
           </div>
         </motion.div>
       </div>

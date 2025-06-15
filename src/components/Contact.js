@@ -104,8 +104,8 @@ const Contact = () => {
     {
       icon: <Mail size={24} />,
       title: 'Email Us',
-      value: 'info@universalpetmovers.com',
-      action: 'mailto:info@universalpetmovers.com'
+      value: 'akhandanandtripathi143@gmail.com',
+      action: 'mailto:akhandanandtripathi143@gmail.com'
     },
     {
       icon: <Clock size={24} />,

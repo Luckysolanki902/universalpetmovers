@@ -173,6 +173,120 @@
   transform: translateY(-2px);
 }
 
+/* Consultation Banner */
+.consultationBanner {
+  margin-top: 4rem;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(44, 85, 48, 0.20);
+  position: relative;
+  background: #ffffff;
+}
+
+.consultationContent {
+  display: flex;
+  min-height: 400px;
+  position: relative;
+}
+
+.consultationInfo {
+  width: 50%;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.consultationInfo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
+  z-index: -1;
+}
+
+.consultationInfo h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #2c5530, #4a7c59);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.consultationInfo p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.consultationImage {
+  width: 50%;
+  position: relative;
+  background-image: url('/dogs-playing.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(44, 85, 48, 0.5), rgba(74, 124, 89, 0.5));
+  mix-blend-mode: multiply;
+}
+
+.consultationButton {
+  background: linear-gradient(135deg, #2c5530, #4a7c59);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(44, 85, 48, 0.25);
+  position: relative;
+  overflow: hidden;
+  align-self: flex-start;
+}
+
+.consultationButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.consultationButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(44, 85, 48, 0.3);
+}
+
+.consultationButton:hover::before {
+  left: 100%;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .services {
@@ -219,6 +333,29 @@
   .ctaButton {
     padding: 0.875rem 1.5rem;
     font-size: 1rem;
+  }
+  
+  .consultationContent {
+    flex-direction: column;
+  }
+  
+  .consultationInfo, 
+  .consultationImage {
+    width: 100%;
+  }
+  
+  .consultationImage {
+    height: 200px;
+    order: -1;
+  }
+  
+  .consultationInfo {
+    padding: 2rem;
+  }
+  
+  .consultationButton {
+    align-self: center;
+    width: 100%;
   }
 }
 
