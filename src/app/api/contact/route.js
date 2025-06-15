@@ -11,11 +11,9 @@ export async function POST(request) {
         { message: 'Please fill in all required fields.' },
         { status: 400 }
       );
-    }
-
-    // Create transporter (you'll need to configure with actual email service)
+    }    // Create transporter (you'll need to configure with actual email service)
     // For now, using a generic SMTP configuration
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: process.env.SMTP_PORT || 587,
       secure: false,
