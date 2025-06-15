@@ -191,26 +191,6 @@ const Transport = () => {  const transportModes = [
           </div>
         </motion.div>
 
-        <motion.div
-          className={styles.transportCta}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <div className={styles.ctaContent}>
-            <h3>Need Help Choosing the Right Transport?</h3>
-            <p>Our experts will help you select the best transportation mode based on your pet&apos;s needs and destination</p>
-            <motion.button
-              className={styles.ctaButton}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Get Transport Consultation
-            </motion.button>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
