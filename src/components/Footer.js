@@ -40,10 +40,9 @@ const Footer = () => {
     { name: 'Transport', href: '#transport' },
     { name: 'Contact', href: '#contact' }
   ];
-
   const services = [
     'Boarding Pickup & Drop',
-    'Pet House Services',
+    'Out Destination Transport',
     'Vet Visit Transport',
     'Air Transport Services',
     'Road Transport Services',
@@ -70,22 +69,19 @@ const Footer = () => {
               <h2>Universal Pet Movers</h2>
               <p className={styles.brandDescription}>
                 Your trusted partner for pet transportation. We ensure your furry friends travel safely and comfortably across India.
-              </p>
-              <a href="https://wa.me/+911234567890" className={styles.whatsappLink} target="_blank" rel="noopener noreferrer">
+              </p>              <a href="https://wa.me/+917836928654" className={styles.whatsappLink} target="_blank" rel="noopener noreferrer">
                 <WhatsAppIcon size={18} />
                 Chat on WhatsApp
-              </a>
-              <div className={styles.socialLinks}>
-                <a href="#" className={styles.socialLink} aria-label="Facebook">
+              </a><div className={styles.socialLinks}>                <a href="https://wa.me/+917836928654" className={styles.socialLink} aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                   <Facebook size={18} />
                 </a>
-                <a href="#" className={styles.socialLink} aria-label="Instagram">
+                <a href="https://wa.me/+917836928654" className={styles.socialLink} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                   <Instagram size={18} />
                 </a>
-                <a href="#" className={styles.socialLink} aria-label="Twitter">
+                <a href="https://wa.me/+917836928654" className={styles.socialLink} aria-label="Twitter" target="_blank" rel="noopener noreferrer">
                   <Twitter size={18} />
                 </a>
-                <a href="#" className={styles.socialLink} aria-label="LinkedIn">
+                <a href="https://wa.me/+917836928654" className={styles.socialLink} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                   <Linkedin size={18} />
                 </a>
               </div>
@@ -149,7 +145,7 @@ const Footer = () => {
           >
             <h3 className={styles.footerTitle}>Contact Us</h3>
             <div className={styles.contactList}>
-              <div className={styles.contactItem}>
+              {/* <div className={styles.contactItem}>
                 <div className={styles.contactIcon}>
                   <MapPin size={16} />
                 </div>
@@ -157,25 +153,23 @@ const Footer = () => {
                   <span>Our Address</span>
                   123 Pet Street, New Delhi - 110001
                 </div>
-              </div>
+              </div> */}
               
               <div className={styles.contactItem}>
                 <div className={styles.contactIcon}>
                   <Phone size={16} />
-                </div>
-                <div className={styles.contactText}>
+                </div>                <div className={styles.contactText}>
                   <span>Phone Number</span>
-                  <a href="tel:+911234567890">+91 885 949 1269</a>
+                  <a href="tel:+917836928654">+91 7836 928 654</a>
                 </div>
               </div>
               
               <div className={styles.contactItem}>
                 <div className={styles.contactIcon}>
                   <Mail size={16} />
-                </div>
-                <div className={styles.contactText}>
+                </div>                <div className={styles.contactText}>
                   <span>Email Address</span>
-                  <a href="mailto:akhandanandtripathi143@gmail.com">akhandanandtripathi143@gmail.com</a>
+                  <a href="mailto:universalpetmovers7@gmail.com">universalpetmovers7@gmail.com</a>
                 </div>
               </div>
             </div>

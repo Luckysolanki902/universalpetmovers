@@ -13,10 +13,10 @@ import styles from './Services.module.css';
 
 const Services = () => {  const services = [
   {
-    icon: <Home size={32} />,
-    title: 'Pet House Services',
-    description: 'Temporary accommodation for your pets with full care, feeding, and attention from our trained staff.',
-    features: ['24/7 pet care', 'Comfortable lodging', 'Regular feeding', 'Play & exercise time'],
+    icon: <MapPin size={32} />,
+    title: 'Out Destination Transport',
+    description: 'Specialized transportation services for long-distance pet relocations across cities and states.',
+    features: ['Inter-city transport', 'State-to-state relocations', 'Customized travel plans', 'Pet comfort priority'],
     image: '/pet house.jpg'
   },
     {
@@ -40,11 +40,13 @@ const Services = () => {  const services = [
     <section id="services" className={styles.services}>
       <div className={styles.container}>
         <motion.div
-          className={styles.header}
-          initial={{ opacity: 0, y: 50 }}
+          className={styles.header}          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ 
+            duration: 0.6,
+            ease: [0.25, 0.1, 0.25, 1.0]
+          }}
         >
           <h2 className={styles.title}>Our Premium Services</h2>
           <p className={styles.subtitle}>
@@ -56,11 +58,14 @@ const Services = () => {  const services = [
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className={styles.serviceCard}
-              initial={{ opacity: 0, y: 50 }}
+              className={styles.serviceCard}              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ 
+                duration: 0.5,
+                ease: [0.25, 0.1, 0.25, 1.0],
+                delay: index * 0.1 
+              }}
               whileHover={{ y: -5 }}
             >
               <div className={styles.serviceImage}>

@@ -17,15 +17,7 @@ const Transport = () => {  const transportModes = [
     {
       icon: <Plane size={48} />,
       title: 'Air Transport',
-      description: 'Fast and secure air transportation for urgent pet relocations across the country.',
-      features: [
-        'Fastest delivery option',
-        'Climate-controlled cargo',
-        'IATA certified containers',
-        'Airport pickup & drop',
-        'Real-time flight tracking',
-        'Professional handling crew'
-      ],
+
       duration: '2-6 hours',
       coverage: 'Major cities',
       image: '/aeroplane.jpg',
@@ -34,15 +26,7 @@ const Transport = () => {  const transportModes = [
     {
       icon: <Truck size={48} />,
       title: 'Road Transport',
-      description: 'Comfortable ground transportation with specially designed pet-friendly vehicles.',
-      features: [
-        'Door-to-door service',
-        'Pet-friendly vehicles',
-        'AC & ventilation systems',
-        'Regular rest stops',
-        'GPS tracking',
-        'Experienced drivers'
-      ],
+
       duration: '4-24 hours',
       coverage: 'Pan India',
       image: '/road.jpg',
@@ -51,15 +35,7 @@ const Transport = () => {  const transportModes = [
     {
       icon: <Ship size={48} />,
       title: 'Ship Transport',
-      description: 'Specialized marine transportation for coastal and island destinations.',
-      features: [
-        'Coastal destinations',
-        'Island connectivity',
-        'Marine-grade containers',
-        'Port handling expertise',
-        'Weather monitoring',
-        'Special care protocols'
-      ],
+
       duration: '1-5 days',
       coverage: 'Coastal areas',
       image: '/sea.jpg',
@@ -133,36 +109,11 @@ const Transport = () => {  const transportModes = [
                 </div>
               </div>
               
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{mode.title}</h3>
-                <p className={styles.cardDescription}>{mode.description}</p>
+              <div className={styles.cardContent}>                <h3 className={styles.cardTitle}>{mode.title}</h3>
                 
-                <div className={styles.cardStats}>
-                  <div className={styles.statItem}>
-                    <Clock size={16} />
-                    <span>{mode.duration}</span>
-                  </div>
-                  <div className={styles.statItem}>
-                    <MapPin size={16} />
-                    <span>{mode.coverage}</span>
-                  </div>
-                </div>
+       
                 
-                <div className={styles.featuresList}>
-                  {mode.features.map((feature, featureIndex) => (
-                    <motion.div
-                      key={featureIndex}
-                      className={styles.featureItem}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: (index * 0.2) + (featureIndex * 0.1) }}
-                    >
-                      <div className={styles.featureDot}></div>
-                      {feature}
-                    </motion.div>
-                  ))}
-                </div>
+
               </div>
             </motion.div>
           ))}

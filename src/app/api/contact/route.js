@@ -18,7 +18,7 @@ export async function POST(request) {
       port: process.env.SMTP_PORT || 587,
       secure: false,
       auth: {
-        user: process.env.SMTP_USER || 'your-email@gmail.com',
+        user: process.env.SMTP_USER || 'universalpetmovers7@gmail.com',
         pass: process.env.SMTP_PASS || 'your-app-password',
       },
     });    // Email content
@@ -44,14 +44,10 @@ export async function POST(request) {
       Submitted on: ${new Date().toLocaleString('en-IN')}
       
       Please contact the customer as soon as possible to provide a quote and discuss the transport requirements.
-    `;
-
-    // Email to business
+    `;    // Email to business
     const businessEmail = {
-      from: process.env.SMTP_USER || 'noreply@universalpetmovers.com',
-      to: [
-        'akhandanandtripathi143@gmail.com',
-         'luckysolanki9027@gmail.com'],
+      from: process.env.SMTP_USER || 'universalpetmovers7@gmail.com',
+      to: ['universalpetmovers7@gmail.com', 'akhandanandtripathi143@gmail.com'], // sending to both personal and business
       subject: `🐾 New Pet Transport Request - ${name} (${petType})`,
       text: emailContent,
       html: `
@@ -97,10 +93,9 @@ export async function POST(request) {
       `,
     };
 
-    // Customer confirmation email
-    const customerEmail = {
-      from: process.env.SMTP_USER || 'noreply@universalpetmovers.com',
-      to: 'noreply@universalpetmovers.com', // We don't have customer email, so this is a placeholder
+    // Customer confirmation email    const customerEmail = {
+      from: process.env.SMTP_USER || 'universalpetmovers7@gmail.com',
+      to: 'universalpetmovers7@gmail.com', // We don't have customer email, so this is a placeholder
       subject: 'Thank you for your Pet Transport Request - Universal Pet Movers',
       text: `        Dear ${name},
         

@@ -9,22 +9,21 @@ import {
 } from 'lucide-react';
 import styles from './Locations.module.css';
 
-const Locations = () => {
-  const allCities = [
+const Locations = () => {  const allCities = [
     'Ghaziabad', 'Noida', 'Jaipur', 'Udaipur', 'Mumbai', 'Lucknow',
-    'Delhi', 'Agra', 'Kanpur', 'Meerut', 'Varanasi', 'Allahabad', 'Dehradun',
-    'Pune', 'Nashik', 'Aurangabad', 'Nagpur', 'Kolkata', 'Howrah', 'Durgapur',
-    'Bangalore', 'many more...'
+    'many more...'
   ];
   return (
     <section id="locations" className={styles.locations}>
       <div className={styles.container}>
         <motion.div
-          className={styles.header}
-          initial={{ opacity: 0, y: 50 }}
+          className={styles.header}          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ 
+            duration: 0.6,
+            ease: [0.25, 0.1, 0.25, 1.0]
+          }}
         >
           <h2 className={styles.title}>Our Service Locations</h2>
           <p className={styles.subtitle}>

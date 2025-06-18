@@ -1,15 +1,16 @@
-import Navigation from '../components/Navigation';
+import TopBar from '../components/TopBar';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import Locations from '../components/Locations';
 import Transport from '../components/Transport';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import ScrollToTop from '../components/ScrollToTop';
 
 export default function Home() {
   return (
     <>
-      <Navigation />
+      <TopBar />
       <main>
         <Hero />
         <Services />
@@ -18,6 +19,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   );
 }

@@ -4,11 +4,13 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Shield, Heart, Truck } from 'lucide-react';
 import Image from 'next/image';
 import styles from './Hero.module.css';
+import { useMediaQuery } from '@mui/material';
 
 const Hero = () => {
   const scrollToContact = () => {
     document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
   };
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const features = [
     {
@@ -33,10 +35,13 @@ const Hero = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <motion.div
-            className={styles.textContent}
-            initial={{ opacity: 0, y: 50 }}
+            className={styles.textContent} initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.25, 0.1, 0.25, 1.0],
+              delay: 0.2
+            }}
           >
             <motion.h1
               className={styles.title}
@@ -47,16 +52,31 @@ const Hero = () => {
               Safe & Loving Pet Transportation
               <span className={styles.accent}> Across India</span>
             </motion.h1>
-            
+            {isMobile && <motion.div
+              className={styles.imageContent}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <Image
+                src="/dogs-playing.jpg"
+                alt="Happy dogs playing"
+                className={styles.heroImage}
+                width={600}
+                height={400}
+                priority
+              />
+            </motion.div>}
             <motion.p
               className={styles.subtitle}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Your trusted partner for professional pet transportation services. 
+              Your trusted partner for professional pet transportation services.
               We ensure your furry friends travel safely and comfortably to their destination.
             </motion.p>
+
 
             <motion.div
               className={styles.features}
@@ -93,28 +113,28 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               Contact Us
-              <ArrowDown size={20} />
+
             </motion.button>
           </motion.div>
 
-          <motion.div
+{     !isMobile &&     <motion.div
             className={styles.imageContent}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Image 
-              src="/dogs-playing.jpg" 
-              alt="Happy dogs playing" 
+            <Image
+              src="/dogs-playing.jpg"
+              alt="Happy dogs playing"
               className={styles.heroImage}
               width={600}
               height={400}
               priority
             />
-          </motion.div>
+          </motion.div>}
         </div>
       </div>
-      
+
       <motion.div
         className={styles.scrollIndicator}
         initial={{ opacity: 0 }}
