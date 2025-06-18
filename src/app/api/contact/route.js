@@ -47,7 +47,7 @@ export async function POST(request) {
     `;    // Email to business
     const businessEmail = {
       from: process.env.SMTP_USER || 'universalpetmovers7@gmail.com',
-      to: ['universalpetmovers7@gmail.com', 'akhandanandtripathi143@gmail.com'], // sending to both personal and business
+      to: ['universalpetmovers7@gmail.com', 'akhandanandtripathi143@gmail.com'], // sending to both personal and
       subject: `🐾 New Pet Transport Request - ${name} (${petType})`,
       text: emailContent,
       html: `
