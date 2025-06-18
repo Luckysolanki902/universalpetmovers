@@ -9,19 +9,22 @@ export async function POST(request) {
     if (!name || !phoneNumber || !petType || !petAge || !transportDate || !transportMode || !dropLocation) {
       return NextResponse.json(
         { message: 'Please fill in all required fields.' },
-        { status: 400 }
-      );
-    }// Create transporter (you'll need to configure with actual email service)
+        { status: 400 }      );
+    }
+    
+    // Create transporter (you'll need to configure with actual email service)
     // For now, using a generic SMTP configuration
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: process.env.SMTP_PORT || 587,
       secure: false,
       auth: {
-        user: process.env.SMTP_USER || 'universalpetmovers7@gmail.com',
+        user: process.env.SMTP_USER || 'luckysolanki902@gmail.com',
         pass: process.env.SMTP_PASS || 'your-app-password',
       },
-    });    // Email content
+    });
+    
+    // Email content
     const emailContent = `
       New Pet Transport Request from Universal Pet Movers Website
       
@@ -42,12 +45,13 @@ export async function POST(request) {
       ${comments || 'No additional comments provided.'}
       
       Submitted on: ${new Date().toLocaleString('en-IN')}
-      
-      Please contact the customer as soon as possible to provide a quote and discuss the transport requirements.
-    `;    // Email to business
+        Please contact the customer as soon as possible to provide a quote and discuss the transport requirements.
+    `;
+    
+    // Email to business
     const businessEmail = {
-      from: process.env.SMTP_USER || 'universalpetmovers7@gmail.com',
-      to: ['universalpetmovers7@gmail.com', 'akhandanandtripathi143@gmail.com'], // sending to both personal and
+      from: 'luckysolanki902@gmail.com',
+      to: ['universalpetmovers7@gmail.com', 'akhandanandtripathi143@gmail.com'], // sending to both personal and business emails
       subject: `🐾 New Pet Transport Request - ${name} (${petType})`,
       text: emailContent,
       html: `
@@ -88,13 +92,13 @@ export async function POST(request) {
             <p style="color: #ccc; margin: 5px 0 0 0; font-size: 14px;">
               Submitted on: ${new Date().toLocaleString('en-IN')}
             </p>
-          </div>
-        </div>
-      `,
+          </div>        </div>
+      `
     };
-
-    // Customer confirmation email    const customerEmail = {
-      from: process.env.SMTP_USER || 'universalpetmovers7@gmail.com',
+    
+    // Customer confirmation email
+    const customerEmail = {
+      from: 'luckysolanki902@gmail.com',
       to: 'universalpetmovers7@gmail.com', // We don't have customer email, so this is a placeholder
       subject: 'Thank you for your Pet Transport Request - Universal Pet Movers',
       text: `        Dear ${name},
@@ -113,11 +117,12 @@ export async function POST(request) {
         For immediate assistance, please call us at our customer service number.
         
         Thank you for trusting us with your beloved pet's transportation.
-        
-        Best regards,
+          Best regards,
         Universal Pet Movers Team
-      `,
-    };    // Send business email
+      `
+    };
+    
+    // Send business email
     await transporter.sendMail(businessEmail);
     
     // Note: We're not sending customer email since we don't collect customer email
