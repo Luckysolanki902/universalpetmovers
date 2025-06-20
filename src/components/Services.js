@@ -17,7 +17,7 @@ const Services = () => {  const services = [
     title: 'Out Destination Transport',
     description: 'Specialized transportation services for long-distance pet relocations across cities and states.',
     features: ['Inter-city transport', 'State-to-state relocations', 'Customized travel plans', 'Pet comfort priority'],
-    image: '/dob-on-sofa.jpg'
+    image: '/ship.jpg'
   },
     {
       icon: <Car size={32} />,
@@ -31,7 +31,7 @@ const Services = () => {  const services = [
       title: 'Vet Visit Services',
       description: 'Professional transportation to veterinary appointments with specialized care during transit.',
       features: ['Vet appointment coordination', 'Medical transport equipment', 'Trained medical handlers', 'Emergency support'],
-      image: '/vet.jpg'
+      image: '/vet2.jpg'
     },
 
   ];

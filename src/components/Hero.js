@@ -59,7 +59,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <Image
-                src="/dogs-playing.jpg"
+                src="/hands.jpg"
                 alt="Happy dogs playing"
                 className={styles.heroImage}
                 width={600}
@@ -124,7 +124,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <Image
-              src="/dogs-playing.jpg"
+              src="/hands.jpg"
               alt="Happy dogs playing"
               className={styles.heroImage}
               width={600}

@@ -361,7 +361,9 @@
 
 @media (max-width: 480px) {
   .serviceImage {
-    height: 150px;
+    height: 180px;
+    object-fit: contain;
+    background-size: contain;
   }
   
   .serviceIcon {

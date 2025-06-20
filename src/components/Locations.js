@@ -5,13 +5,20 @@ import {
   Navigation, 
   Clock, 
   Phone,
-  MoreHorizontal
+  MoreHorizontal,
+  Landmark,
+  Building2,
+  Warehouse,
+  Castle,
+  Monument,
+  PalmtreeIcon,
+  Mountain
 } from 'lucide-react';
 import styles from './Locations.module.css';
 
 const Locations = () => {  const allCities = [
-    'Ghaziabad', 'Noida', 'Jaipur', 'Udaipur', 'Mumbai', 'Lucknow',
-    'many more...'
+    'Delhi', 'Delhi NCR', 'Mumbai', 'Pune', 'Lucknow', 'Jaipur',
+    'Many more...'
   ];
   return (
     <section id="locations" className={styles.locations}>

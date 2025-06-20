@@ -187,11 +187,11 @@ const Footer = () => {
             © {new Date().getFullYear()} Universal Pet Movers. All rights reserved.
           </div>
           
-          <div className={styles.legal}>
+          {/* <div className={styles.legal}>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
             <a href="#">Sitemap</a>
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </footer>

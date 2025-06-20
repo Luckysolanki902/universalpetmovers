@@ -100,8 +100,8 @@ const Contact = () => {
     {
       icon: <WhatsAppIcon size={24} />,
       title: 'WhatsApp Us',
-      value: '+91 8859491269',
-      action: 'https://wa.me/918859491269'
+      value: '+91 7836928654',
+      action: 'https://wa.me/917836928654'
     },
     {
       icon: <Mail size={24} />,

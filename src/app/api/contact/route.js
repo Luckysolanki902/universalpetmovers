@@ -50,7 +50,7 @@ export async function POST(request) {
     
     // Email to business
     const businessEmail = {
-      from: 'luckysolanki902@gmail.com',
+      from: process.env.SMTP_USER,
       to: ['universalpetmovers7@gmail.com', 'akhandanandtripathi143@gmail.com'], // sending to both personal and business emails
       subject: `🐾 New Pet Transport Request - ${name} (${petType})`,
       text: emailContent,
@@ -96,31 +96,7 @@ export async function POST(request) {
       `
     };
     
-    // Customer confirmation email
-    const customerEmail = {
-      from: 'luckysolanki902@gmail.com',
-      to: 'universalpetmovers7@gmail.com', // We don't have customer email, so this is a placeholder
-      subject: 'Thank you for your Pet Transport Request - Universal Pet Movers',
-      text: `        Dear ${name},
-        
-        Thank you for choosing Universal Pet Movers for your pet transportation needs.
-        
-        We have received your request for ${petType} transport and our team will contact you shortly on ${phoneNumber} to discuss the details and provide you with a customized quote.
-        
-        Your Request Details:
-        - Pet Type: ${petType}
-        - Pet Age: ${petAge} years
-        - Transport Date: ${new Date(transportDate).toLocaleDateString('en-IN')}
-        - Mode: ${transportMode}
-        - Destination: ${dropLocation}
-        
-        For immediate assistance, please call us at our customer service number.
-        
-        Thank you for trusting us with your beloved pet's transportation.
-          Best regards,
-        Universal Pet Movers Team
-      `
-    };
+
     
     // Send business email
     await transporter.sendMail(businessEmail);
